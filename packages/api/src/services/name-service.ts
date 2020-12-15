@@ -1,8 +1,10 @@
+import * as grpc from '@grpc/grpc-js';
 import { NameClient } from '@protos/name_grpc_pb';
 import loadService from './service-loader';
 
-export default loadService<NameClient>({
-  serviceName: 'Name',
-  protoName: 'name',
-  address: 'localhost:3334',
-});
+const service = new NameClient(
+  'localhost:3334',
+  grpc.credentials.createInsecure(),
+);
+
+export default service;

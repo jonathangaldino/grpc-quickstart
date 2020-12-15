@@ -8,7 +8,7 @@ export function loadProto(filename: string) {
     {
       keepCase: true,
       defaults: true,
-    }
+    },
   );
 
   const proto = grpc.loadPackageDefinition(packageDefinition);
