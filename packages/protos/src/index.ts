@@ -12,6 +12,6 @@ export function loadProto(filename: string) {
   );
 
   const proto = grpc.loadPackageDefinition(packageDefinition);
-  
+
   return proto;
 }

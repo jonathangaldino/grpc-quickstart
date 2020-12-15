@@ -7,10 +7,10 @@ export const startServer: StartServerType = (): void => {
   const server = new grpc.Server();
 
   /** Services */
-  server.addService(NameDomain.service, NameDomain.handler);
+  server.addService(NameDomain.service, NameDomain.handler as any);
 
   server.bindAsync(
-    `localhost:3334`,
+    'localhost:3334',
     grpc.ServerCredentials.createInsecure(),
     (err: Error | null, port: number) => {
       if (err) {
@@ -21,6 +21,6 @@ export const startServer: StartServerType = (): void => {
       console.log(`gRPC listening on ${port}`);
     }
   );
-}
+};
 
 startServer();
