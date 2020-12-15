@@ -1,9 +1,5 @@
 import * as grpc from '@grpc/grpc-js';
-
-import { loadProto } from '@services/protos';
-import user from './handlers/user';
-
-const proto = loadProto('user');
+import NameDomain from './handlers/name';
 
 type StartServerType = () => void;
 
@@ -11,7 +7,7 @@ export const startServer: StartServerType = (): void => {
   const server = new grpc.Server();
 
   /** Services */
-  server.addService(user.service, user.handler);
+  server.addService(NameDomain.service, NameDomain.handler);
 
   server.bindAsync(
     `localhost:3334`,
