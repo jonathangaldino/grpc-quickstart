@@ -1,19 +1,21 @@
-import * as gprc from '@grpc/grpc-js';
-import { UserService, Empty, ListUsersResponse, IEmpty, IListUsersResponse } from '@protos'
+import { ListUsersResponse, User } from '@protos/user_pb'
+import { UserServiceService } from '@protos/user_grpc_pb'
 
-interface UserHandler {
-  listUsers: gprc.handleUnaryCall<IEmpty, IListUsersResponse>;
-}
+const implementation = {
+  listUsers(_call: any, cb: any) {
+    const user = new User()
+    user.setName('Jonathan');
+    user.setAge('21');
+    user.setId('1');
 
-const implementation: UserHandler = {
-  listUsers(request, callback) {
-    const users = [{ id: '1', name: 'Jonathan', age: '21' }];
+    const users = new ListUsersResponse();
+    users.addUsers(user, 0);
 
-    const reply = new ListUsersResponse();
-    reply.users = users;
-
-    return callback(null, reply);
+    return cb(null, users);
   }
 }
 
-export default implementation;
+export default {
+  service: UserServiceService,
+  handler: implementation
+}

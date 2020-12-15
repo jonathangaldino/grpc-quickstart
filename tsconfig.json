@@ -11,7 +11,7 @@
     "baseUrl": ".",
     "paths": {
       "@services/*": ["packages/*/src"],
-      "@protos": ["packages/protos/generated"]
+      "@protos/*": ["packages/protos/generated/*"]
     }
   },
   "exclude": ["node_modules"]

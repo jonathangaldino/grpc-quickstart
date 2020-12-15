@@ -1,7 +1,7 @@
 import * as grpc from '@grpc/grpc-js';
 
 import { loadProto } from '@services/protos';
-import userImplementation from './handlers/user';
+import user from './handlers/user';
 
 const proto = loadProto('user');
 
@@ -10,7 +10,8 @@ type StartServerType = () => void;
 export const startServer: StartServerType = (): void => {
   const server = new grpc.Server();
 
-  server.addService((proto['UserService'] as any).service, userImplementation);
+  /** Services */
+  server.addService(user.service, user.handler);
 
   server.bindAsync(
     `localhost:3334`,
@@ -20,11 +21,10 @@ export const startServer: StartServerType = (): void => {
         return console.error(err);
       }
 
+      server.start();
       console.log(`gRPC listening on ${port}`);
     }
   );
-
-  server.start();
 }
 
 startServer();
