@@ -6,7 +6,5 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --no-notify -r tsconfig-paths/register src/index.ts"
   },
-  "dependencies": {
-    "@grpc/grpc-js": "^1.2.2"
-  }
+  "dependencies": {}
 }

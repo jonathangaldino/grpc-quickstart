@@ -7,10 +7,7 @@
     "build": "node src/generate",
     "postbuild": "echo \"Generated files! 🚀\""
   },
-  "dependencies": {
-    "@grpc/grpc-js": "^1.2.2",
-    "@grpc/proto-loader": "^0.5.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/google-protobuf": "^3.7.4",
     "google-protobuf": "^3.14.0",

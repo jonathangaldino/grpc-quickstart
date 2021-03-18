@@ -10,7 +10,8 @@
     "build:protos": "yarn workspace protos build"
   },
   "dependencies": {
-    "@grpc/proto-loader": "^0.5.5"
+    "@grpc/proto-loader": "^0.5.5",
+    "@grpc/grpc-js": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.13",
