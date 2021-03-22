@@ -32,6 +32,9 @@ module.exports = {
       node: {
         extensions: ['.ts'],
       },
+      typescript: {
+        directory: ['packages/*/tsconfig.json'],
+      },
     },
   },
 };
