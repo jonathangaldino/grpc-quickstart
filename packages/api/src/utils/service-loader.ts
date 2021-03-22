@@ -1,5 +1,5 @@
 import * as grpc from '@grpc/grpc-js';
-import { loadProto } from '@services/loadProto';
+import loadProto from '@services/loadProto';
 
 interface ILoadServiceDTO {
   serviceName: string;

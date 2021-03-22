@@ -2,7 +2,7 @@ import path from 'path';
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 
-export function loadProto(filename: string) {
+function loadProto(filename: string) {
   const packageDefinition = protoLoader.loadSync(
     path.resolve(__dirname, '..', 'pb', `${filename}.proto`),
     {
@@ -15,3 +15,5 @@ export function loadProto(filename: string) {
 
   return proto;
 }
+
+export default loadProto;
