@@ -24,6 +24,8 @@ module.exports = {
         ts: 'never',
       },
     ],
+    'import/no-extraneous-dependencies': 'off',
+    'class-methods-use-this': 'off',
   },
   settings: {
     'import/resolver': {
