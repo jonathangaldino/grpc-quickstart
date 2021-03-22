@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import * as NameController from './controller/name-controller';
+import * as GreetingsController from './controller/greetings-controller';
 
 const router = Router();
 
-router.post('/names', NameController.joinNames);
+router.post('/greetings', GreetingsController.hello);
 
 export default router;
