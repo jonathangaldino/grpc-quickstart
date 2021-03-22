@@ -1,10 +1,22 @@
 import { Request, Response } from 'express';
-import { sayHello } from '../services/greetings-service';
+import GreetingsService from '../services/greetings-service';
 
 export const hello = async (req: Request, res: Response) => {
   const { name } = req.query;
 
-  await sayHello(<string>name);
+  const reply = await GreetingsService.sayHello(<string>name);
 
-  return res.json({ message: 'message received' });
+  const svMessage = reply.getMessage();
+
+  return res.json({ message: svMessage });
+};
+
+export const helloAgain = async (req: Request, res: Response) => {
+  const { name } = req.query;
+
+  const reply = await GreetingsService.sayHelloAgain(<string>name);
+
+  const svMessage = reply.getMessage();
+
+  return res.json({ message: svMessage });
 };

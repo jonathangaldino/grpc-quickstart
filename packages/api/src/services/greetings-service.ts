@@ -7,7 +7,7 @@ const service = new GreeterClient(
   grpc.credentials.createInsecure(),
 );
 
-export const sayHello = async (name: string) => {
+const sayHello = async (name: string): Promise<HelloReply> => {
   const request = new HelloRequest();
   request.setName(name);
 
@@ -21,3 +21,22 @@ export const sayHello = async (name: string) => {
     });
   });
 };
+
+const sayHelloAgain = async (name: string): Promise<HelloReply> => {
+  const request = new HelloRequest();
+  request.setName(name);
+
+  return new Promise((resolve, reject) => {
+    service.sayHelloAgain(request, (err, response) => {
+      if (err) {
+        reject(err);
+      }
+
+      resolve(response);
+    });
+  });
+};
+
+const GreetingsService = { sayHello, sayHelloAgain };
+
+export default GreetingsService;

@@ -8,10 +8,10 @@ class GreetingsServer implements IGreeterServer {
     call: grpc.ServerUnaryCall<HelloRequest, HelloReply>,
     callback: sendUnaryData<HelloReply>,
   ) {
-    console.log(call);
+    const name = call.request.getName();
 
     const reply = new HelloReply();
-    reply.setMessage('Hello Jonathan');
+    reply.setMessage(`Hello ${name}`);
     callback(null, reply);
   }
 
@@ -19,10 +19,10 @@ class GreetingsServer implements IGreeterServer {
     call: grpc.ServerUnaryCall<HelloRequest, HelloReply>,
     callback: sendUnaryData<HelloReply>,
   ) {
-    console.log(call);
+    const name = call.request.getName();
 
     const reply = new HelloReply();
-    reply.setMessage('Hello again Jonathan');
+    reply.setMessage(`Hello again... ${name}`);
     callback(null, reply);
   }
 }
